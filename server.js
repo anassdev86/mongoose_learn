@@ -14,6 +14,6 @@ mongoose.connect(DB)
 
 
 
-app.listen(PORT, '127.0.0.1', () => {
+app.listen(PORT, () => {
     console.log('SERVER RUN AT: '+ PORT);
 });
