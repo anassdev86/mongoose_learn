@@ -2,16 +2,18 @@ const name = document.getElementById('name');
 const large = document.getElementById('large');
 const age = document.getElementById('age');
 const list = document.querySelector('.list');
+const image = document.getElementById('image')
+const URL_SERVER = "http://localhost:4000/api/v1/users";
 
 
 const sendData = (name, large, age) => {
     console.log(name, large)
-    fetch('http://localhost:4000/api/v1/users', {
+    fetch(URL_SERVER, {
         method: "POST",
         headers:{
             'Content-Type': 'application/json',
         },
-        body:JSON.stringify({name, large, age})
+        body:JSON.stringify({name, large, age, image: image.value})
     }).then(res => res.json()).then(msg => {
         console.log(msg.status);
         if(msg.status !== 200) return document.getElementById('msg').innerText = "Error";
@@ -21,9 +23,10 @@ const sendData = (name, large, age) => {
     });
 }
 
-const URL = 'http://localhost:4000/api/v1/users';
-fetch(URL).then(res => res.json()).then(data => {
+
+fetch(URL_SERVER).then(res => res.json()).then(data => {
     const { result } = data;
+    console.log(result)
     result.forEach(el => {
         let html = `<li id='${el._id}' class='item'>${el.name}</li>`;
         list.insertAdjacentHTML('beforeend', html);
@@ -31,7 +34,7 @@ fetch(URL).then(res => res.json()).then(data => {
     });
     Array.from(document.querySelectorAll('.item')).forEach(el => {
         el.addEventListener('click', e => {
-            fetch(`http://localhost:4000/api/v1/users/${e.target.id}`)
+            fetch(`${URL_SERVER}/${e.target.id}`)
             .then(res => res.json())
             .then(data => {
                 document.querySelector('.view').innerHTML = `<div class='card'>
@@ -42,7 +45,7 @@ fetch(URL).then(res => res.json()).then(data => {
             });
         })
     })
-});
+}).catch(err => console.log(err));
 
 document.getElementById('form').onsubmit = e =>  {
     e.preventDefault();

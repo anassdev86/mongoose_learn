@@ -1,7 +1,11 @@
+const multer = require('multer');
 const User = require('./../models/userModel');
+
+
 
 exports.createNewUser = async (req, res) => {
    try{
+     console.log(req.file);
      const newUser = await User.create(req.body);
      res.status(200).json({
         status: 200,
@@ -10,7 +14,7 @@ exports.createNewUser = async (req, res) => {
      });
 
    }catch(err){
-     res.status(400).json({
+     res.status(500).json({
         status:'Fail',
         message: err.message
      })
@@ -67,6 +71,28 @@ exports.upDateUser = async (req, res) => {
         });
     }
 }
+
+exports.deleteUser = async (req, res) => {
+    
+    try{
+        await User.deleteOne({_id: req.params.id});
+        res.status(204).json({
+            status: "success",
+            results: null
+        })
+    }catch(err){
+        res.status(400).json({
+            status: 'Fail',
+            message: err.message
+        })
+    }
+
+}
+
+exports.upLoadImage = (req, res) => {
+    res.json(req.file);
+}
+
 
 // OLD METHOD TO CREATE NEW USER
 // exports.createNewUser = (req, res) => {
