@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create new user</title>
+</head>
+<body>
+    <div class="container_form">
+        <p id="msg"></p>
+        <form method="post" action="" id="form" enctype="multipart/form-data">
+            <input type="file" name="file" id="image"/>
+            <input type="text" name="name" placeholder="your name" id="name"/>
+            <input type="number" name="age" placeholder="your age" id="age"/>
+            <input type="number" name="large" placeholder="dick large" id="large"/>
+            <input type="submit" value="submit" />
+        </form>
+        <a href="https://mongoose-learn-ex.onrender.com">go back</a>
+    </div>
+    <script>
+        const name = document.getElementById('name');
+const formEl = document.getElementById('form');
+const large = document.getElementById('large');
+ const age = document.getElementById('age');
+ const URL_SERVER = "https://mongoose-learn-ex.onrender.com/api/v1/users";
+
+const image = document.getElementById('image');
+ form.addEventListener("submit", e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+     const urlEncoded = new URLSearchParams(fd).toString();
+    
+     fetch(URL_SERVER, {
+         method: "POST",
+         body: fd,
+     }).then(res => res.json()).then(msg => console.log(msg));
+    
+ });
+ name.addEventListener('keypress', (event) => {
+    document.getElementById('msg').innerText = "";
+});
+    </script>
+</body>
+</html>

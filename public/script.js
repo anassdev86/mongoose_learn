@@ -1,23 +1,8 @@
-const name = document.getElementById('name');
-const formEl = document.getElementById('form');
-const large = document.getElementById('large');
-const age = document.getElementById('age');
 const list = document.querySelector('.list');
-const image = document.getElementById('image')
-const URL_SERVER = "http://localhost:4000/api/v1/users";
+const URL_SERVER = "https://mongoose-learn-ex.onrender.com/api/v1/users";
 
 
-form.addEventListener("submit", e => {
-   e.preventDefault();
-   const fd = new FormData(form);
-    const urlEncoded = new URLSearchParams(fd).toString();
-    
-    fetch(URL_SERVER, {
-        method: "POST",
-        body: fd,
-    }).then(res => res.json()).then(msg => console.log(msg));
-    
-});
+
 
 
 
@@ -40,7 +25,7 @@ fetch(URL_SERVER).then(res => res.json()).then(data => {
             .then(res => res.json())
             .then(data => {
                 document.querySelector('.view').innerHTML = `<div class='card'>
-                  <img src=./downloads/${data.data.image} alt= "profile" height="100px" />
+                  <img src=https://mongoose-learn-ex.onrender.com/downloads/${data.data.image} alt= "profile" height="100px" />
                   <strong}>${data.data.name}</strong>
                   <p>${data.data.large} </p>
                   <span>${data.data.age || 40} years</span>
@@ -50,19 +35,7 @@ fetch(URL_SERVER).then(res => res.json()).then(data => {
     })
 }).catch(err => console.log(err));
 
-document.getElementById('form').onsubmit = e =>  {
-    e.preventDefault();
-    
-    if(name.value === ""){
-        return document.getElementById('msg').innerText = "Please Complete you info";
-    }
 
-    
-
-}
-name.addEventListener('keypress', (event) => {
-    document.getElementById('msg').innerText = "";
-});
 
 
 

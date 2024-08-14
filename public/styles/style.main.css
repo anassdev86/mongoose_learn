@@ -1,5 +1,4 @@
-*::after,
-*::before{
+*{
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -43,3 +42,10 @@ body{
     font-size: 1.6rem;
 }
 .content .item_large{font-size: 1.2rem;}
+
+.header{
+    text-align: center;
+}
+.header .header_primary{
+    font-size: 3.8rem;
+}
