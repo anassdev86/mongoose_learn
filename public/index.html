@@ -4,20 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' href="styles/style.main.css" styleshe />
 </head>
-<style>
-    .list li:hover{
-        padding: 10px;
-        transform: scale(1.1);
-        cursor: pointer;
-    }
-</style>
+
 <body>
     <div class="container">
         <div class="container_form">
             <p id="msg"></p>
-            <form method="post" action="" id="form">
-                <input type="file" name="image" id="image"/>
+            <form method="post" action="" id="form" enctype="multipart/form-data">
+                <input type="file" name="file" id="image"/>
                 <input type="text" name="name" placeholder="your name" id="name"/>
                 <input type="number" name="age" placeholder="your age" id="age"/>
                 <input type="number" name="large" placeholder="dick large" id="large"/>

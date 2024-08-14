@@ -1,0 +1,45 @@
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{font-size: 62.5%;}
+
+body{
+    font-family: sans-serif;
+    font-weight: 1.4;
+    box-sizing: border-box;
+}
+
+
+
+.content{
+    display: flex;
+}
+
+.content .list{
+    list-style: none;
+    padding: 1.2rem ;
+    flex-basis: 30%;
+}
+
+.content .list li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: .8rem;
+    text-transform: uppercase;
+    background-color: #ccc;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    border-radius: .4rem;
+    color: #777;
+    cursor: pointer;
+}
+.content .item_name{
+    font-size: 1.6rem;
+}
+.content .item_large{font-size: 1.2rem;}

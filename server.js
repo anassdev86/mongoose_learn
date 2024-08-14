@@ -8,10 +8,11 @@ const PORT = process.env.PORT || 3000;
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 
 
-mongoose.connect(DB, { useNewUrlParser: true,  useUnifiedTopology: true })
+mongoose.connect(DB)
         .then(msg => console.log('DATABASE CONNECTED :)'))
         .catch(err => console.log(err));
 
+        // $Kvh@HW*i7ZfCG8
 
 
 app.listen(PORT, () => {

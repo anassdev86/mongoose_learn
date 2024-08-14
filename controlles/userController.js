@@ -1,17 +1,21 @@
-const multer = require('multer');
 const User = require('./../models/userModel');
 
 
 
 exports.createNewUser = async (req, res) => {
    try{
-     console.log(req.file);
-     const newUser = await User.create(req.body);
-     res.status(200).json({
-        status: 200,
-        message: 'OK',
-        results: newUser
-     });
+     const newUser =  await User.create({
+        name: req.body.name,
+        image: req.file.originalname,
+        large: req.file.large,
+        age: req.body.age
+     })
+    //  
+    res.status(201).json({
+        status: "seccess",
+        message: "OK",
+        result: newUser
+    });
 
    }catch(err){
      res.status(500).json({
