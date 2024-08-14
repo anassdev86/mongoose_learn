@@ -23,17 +23,21 @@ const formEl = document.getElementById('form');
 const large = document.getElementById('large');
  const age = document.getElementById('age');
  const URL_SERVER = "https://mongoose-learn-ex.onrender.com/api/v1/users";
+ //https://mongoose-learn-ex.onrender.com
 
 const image = document.getElementById('image');
  form.addEventListener("submit", e => {
     e.preventDefault();
-    const fd = new FormData(form);
+     const fd = new FormData(form);
      const urlEncoded = new URLSearchParams(fd).toString();
     
      fetch(URL_SERVER, {
          method: "POST",
          body: fd,
-     }).then(res => res.json()).then(msg => console.log(msg));
+     }).then(res => {
+        console.log(res);
+        return res.json();
+     }).then(msg => console.log(msg));
     
  });
  name.addEventListener('keypress', (event) => {

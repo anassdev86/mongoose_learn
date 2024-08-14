@@ -4,10 +4,13 @@ const User = require('./../models/userModel');
 
 exports.createNewUser = async (req, res) => {
    try{
-     const newUser =  await User.create({
+    
+        console.log(req.file.originalname);
+
+        const newUser =  await User.create({
         name: req.body.name,
         image: req.file.originalname,
-        large: req.file.large,
+        large: req.body.large,
         age: req.body.age
      })
     //  
